@@ -1,0 +1,28 @@
+{
+  "name": "cypressreports",
+  "version": "1.0.0",
+  "description": "test some cypress reporting improments",
+  "main": "index.js",
+  "scripts": {
+    "start": "node_modules/.bin/cypress run",
+    "test": "node_modules/.bin/cypress open",
+    "clearReports": "node clearReports.js",
+    "allureReportGenerate": "npm run enviromentFile && node allureArchive.js",
+    "enviromentFile": "node allureEnvironment.js"
+  },
+  "author": "hal.eagar@door3.com",
+  "license": "ISC",
+  "dependencies": {
+    "child_process": "^1.0.2",
+    "cypress": "^3.1.2",
+    "fs": "0.0.1-security",
+    "fs-extra": "^7.0.1",
+    "klaw-sync": "^6.0.0",
+    "lodash": "^4.17.11",
+    "mocha": "^5.2.0",
+    "mocha-allure-reporter": "^1.4.0",
+    "path": "^0.12.7",
+    "sanitize-filename": "^1.6.1",
+    "xml2js": "^0.4.19"
+  }
+}

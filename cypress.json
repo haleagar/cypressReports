@@ -1,0 +1,19 @@
+{
+  "pageLoadTimeout": 10000,
+  "watchForFileChanges": false,
+  "trashAssetsBeforeRuns": true,
+  "video": true,
+  "viewportHeight":	768,
+  "viewportWidth":	1024,
+  "baseUrl": "http://local.door3.com",
+  "reporter": "mocha-allure-reporter",
+  "reporterOptions": {
+
+  },
+  "integrationFolder": "cypress/integration/",
+  "waitForAnimations": true,
+  "env": {
+    "TESTMODE": "desktop"
+  },
+  "chromeWebSecurity": false
+}

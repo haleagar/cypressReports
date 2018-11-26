@@ -1,0 +1,6 @@
+<environment>
+    <parameter>
+        <key>Framework</key>
+        <value>Cypress</value>
+    </parameter>
+</environment>
