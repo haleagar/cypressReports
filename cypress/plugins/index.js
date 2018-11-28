@@ -10,8 +10,28 @@
 
 // This function is called when a project is opened or re-opened (e.g. due to
 // the project's config changing)
+// https://docs.cypress.io/api/plugins/writing-a-plugin.html#Plugins-API
+
 
 module.exports = (on, config) => {
   // `on` is used to hook into various events Cypress emits
   // `config` is the resolved Cypress config
-}
+  // on('file:preprocessor', (file) => {
+  //   //allure.description('extra description details');
+  //   //allure.addArgument('specfile', scriptName);
+  //   console.log('file',file);
+  // })
+
+  on('task', {
+    scriptName (message) {
+      console.log(message);
+      //allure.addArgument('specfile', scriptName);
+      return null
+    }
+  });
+  on('task', {
+    log (message) {
+      console.log(message);
+    }
+  });
+};

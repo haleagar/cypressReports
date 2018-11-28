@@ -5,7 +5,7 @@
     "toConsole": false,
     "properties": {
       "Enviroment": "local-docker",
-      "Platform": "shoud be dynamic"
+      "Platform": "should be dynamic"
     },
     "suiteTitleSeparatedBy": " Scenario: ",
     "includePending": true,
@@ -14,7 +14,11 @@
     "testCaseSwitchClassnameAndName": true,
     "useFullSuiteTitle": false
   },
-  "xunitReporterOptions": {
-    "output": "xunitReports/[hash]-cypress-xunit-output.xml"
+  "cypressTestrailReporterOptions": {
+    "domain": "yourdomain.testrail.com",
+    "username": "username",
+    "password": "password",
+    "projectId": 1,
+    "suiteId": 1
   }
 }
