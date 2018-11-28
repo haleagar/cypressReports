@@ -1,0 +1,20 @@
+{
+  "reporterEnabled": "spec, mocha-junit-reporter, mocha-allure-reporter",
+  "mochaJunitReporterReporterOptions": {
+    "mochaFile": "junitReports/[hash]-cypress-junit-output.xml",
+    "toConsole": false,
+    "properties": {
+      "Enviroment": "local-docker",
+      "Platform": "shoud be dynamic"
+    },
+    "suiteTitleSeparatedBy": " Scenario: ",
+    "includePending": true,
+    "rootSuiteTitle": "credmo",
+    "testsuitesTitle": "Cypress Tests",
+    "testCaseSwitchClassnameAndName": true,
+    "useFullSuiteTitle": false
+  },
+  "xunitReporterOptions": {
+    "output": "xunitReports/[hash]-cypress-xunit-output.xml"
+  }
+}

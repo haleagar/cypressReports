@@ -1,14 +1,15 @@
 {
-  "pageLoadTimeout": 10000,
+  "projectId": "asvab6",
+  "pageLoadTimeout": 35000,
   "watchForFileChanges": false,
   "trashAssetsBeforeRuns": true,
   "video": true,
-  "viewportHeight":	768,
-  "viewportWidth":	1024,
-  "baseUrl": "http://local.door3.com",
-  "reporter": "mocha-allure-reporter",
+  "viewportHeight": 768,
+  "viewportWidth": 1024,
+  "baseUrl": "https://dev-door3-v3.pantheonsite.io/",
+  "reporter": "mocha-multi-reporters",
   "reporterOptions": {
-
+    "configFile":"config.json"
   },
   "integrationFolder": "cypress/integration/",
   "waitForAnimations": true,

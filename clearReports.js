@@ -29,7 +29,7 @@ function deleteFiles(startPath,filter){
 }
 
 deleteFiles('allure-results','-testsuite.xml');
-// deleteFiles('cypress/reports','cypress-junit-output.xml');
+deleteFiles('junitReports','cypress-junit-output.xml');
 //  fs.unlink('cypress/reports/CypressTestReport.html', (err) => {
 //      if (err) throw err;
 // });

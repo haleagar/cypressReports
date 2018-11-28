@@ -15,7 +15,7 @@ if(dd<10){
 if(mm<10){
     mm='0'+mm;
 }
-
+const allure = require('allure-commandline');
 const path = require('path'), fs=require('fs-extra'), fse=require('fs-extra');
 const parseString = require('xml2js').parseString, xml2js = require('xml2js');
 const klawSync = require('klaw-sync');
@@ -106,7 +106,7 @@ function deleteFiles(startPath,filter){
                         let testCases = json['ns2:test-suite']['test-cases'];
                         // loop each <test-case
                         testCases[0]['test-case'].forEach(function (testCase) {
-                            testCase.name = 'Senario: ' + testCase.name;
+                            //testCase.name = 'Senario: ' + testCase.name;
                             if (testCase.failure) {
                                 // put test suite name in message for categories
                                 testCase.failure[0].message[0] = testSuiteName +' : '+ testCase.failure[0].message[0];
@@ -179,40 +179,21 @@ function deleteFiles(startPath,filter){
     }
 
     function runAllureGenerate() {
-        const {exec} = require('child_process');
-        const proc1 = exec('allure generate --clean');
+      var generation = allure(['generate', '--clean', 'allure-results']);
 
-        proc1.stdout.on('data', data => {
-            console.log(`stdout: ${data}`);
-        });
-        proc1.stderr.on('data', data => {
-            console.log(`stderr: ${data}`);
-        });
-        proc1.on('error', code => {
-            console.log(`bleh ${code}`);
-        });
-        proc1.on('close', code => {
-            console.log(`child process 1 exited with code ${code}`);
-            let cibuildid = 'local-docker' + yyyy + mm + dd + time;
-            console.log('adding report to archive ' + cibuildid);
-            fse.copy('allure-report', 'reports-archive/allure-report' + cibuildid, (err) => {
-                if (err) { throw err; }
-            });
-            //deleteFiles('allure-results','-testsuite.xml');
-            //todo upload test results to a public server
-            const reportRepo = '../../../credmo-e2e-results';
-            const reportRepoPublic = reportRepo+'/public';
-            if (fs.existsSync(reportRepo)) {
-                if (fs.existsSync(reportRepoPublic)) {
-                    fse.removeSync(reportRepoPublic);
-                }
-                fse.copy('allure-report', reportRepoPublic, (err) => {
-                    if (err) {
-                        throw err;
-                    }
-                });
-            }
-        });
+      generation.on('exit', function(exitCode) {
+        console.log('Generation is finished with code:', exitCode);
+        let cibuildid = 'local-docker' + yyyy + mm + dd + time;
+        console.log('adding report to archive ' + cibuildid);
+
+        if (fs.existsSync('reports-archive')) {
+          fse.copy('allure-report', 'reports-archive/allure-report' + cibuildid, (err) => {
+            if (err) { throw err; }
+          });
+        }
+
+      });
+
     }
 
     try {
